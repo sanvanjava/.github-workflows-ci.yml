@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pebbles Game</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/emscripten_webworker@latest/dist/emscripten_webworker.min.js"></script>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const worker = new EmscriptenWebWorker("pebbles_game.wasm");
+
+        worker.onmessage = (event) => {
+
+
+        };
+
+        worker.postMessage({
+            type: "init",
+            data: {
+                difficulty: "Easy",
+                pebblesCount: 15,
+                maxPebblesPerTurn: 2,
+            }
+        });
+    </script>
+</body>
+
+</html>
